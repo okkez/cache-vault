@@ -9,9 +9,7 @@ use crate::error::CacheVaultError;
 static MIGRATOR: Migrator = sqlx::migrate!();
 
 pub static POOL: LazyLock<SqlitePool> = LazyLock::new(|| {
-    let options = SqliteConnectOptions::new()
-        .filename(&*DB_PATH)
-        .create_if_missing(true);
+    let options = SqliteConnectOptions::new().filename(&*DB_PATH).create_if_missing(true);
     let conn = SqlitePool::connect_lazy_with(options);
     conn
 });
@@ -44,10 +42,7 @@ static MIGRATED: OnceLock<bool> = OnceLock::new();
 pub async fn migrate() -> Result<(), CacheVaultError> {
     if MIGRATED.get().is_none() {
         dbg!("migrate");
-        MIGRATOR
-            .run(&*POOL)
-            .await
-            .map_err(CacheVaultError::MigrateError)?;
+        MIGRATOR.run(&*POOL).await.map_err(CacheVaultError::MigrateError)?;
         let _ = MIGRATED.set(true);
     }
     Ok(())

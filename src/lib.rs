@@ -30,10 +30,7 @@ pub async fn save(
     Ok(())
 }
 
-pub async fn fetch(
-    namespace: &str,
-    key_name: &str,
-) -> Result<(String, Option<NaiveDateTime>), CacheVaultError> {
+pub async fn fetch(namespace: &str, key_name: &str) -> Result<(String, Option<NaiveDateTime>), CacheVaultError> {
     let entry = Entry::fetch(namespace, key_name).await?;
     Ok((entry.plaintext()?, entry.expired_at))
 }
@@ -41,14 +38,7 @@ pub async fn fetch(
 pub async fn fetch_with_attributes(
     namespace: &str,
     key_name: &str,
-) -> Result<
-    (
-        String,
-        Option<NaiveDateTime>,
-        Option<HashMap<String, String>>,
-    ),
-    CacheVaultError,
-> {
+) -> Result<(String, Option<NaiveDateTime>, Option<HashMap<String, String>>), CacheVaultError> {
     let entry = Entry::fetch(namespace, key_name).await?;
     let attributes = Attribute::fetch_all(entry.id)
         .await?
@@ -104,14 +94,7 @@ mod tests {
             (String::from("attr2"), String::from("attr2-value")),
             (String::from("attr3"), String::from("attr3-value")),
         ]);
-        save(
-            "test",
-            "test-key1",
-            "test-value1",
-            Some(attributes.clone()),
-            None,
-        )
-        .await?;
+        save("test", "test-key1", "test-value1", Some(attributes.clone()), None).await?;
 
         if let (value1, _, Some(attrs)) = fetch_with_attributes("test", "test-key1").await? {
             assert_eq!(value1, "test-value1");

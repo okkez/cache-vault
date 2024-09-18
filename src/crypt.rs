@@ -12,9 +12,7 @@ pub fn encrypt(raw: String) -> Result<(Vec<u8>, Vec<u8>), CacheVaultError> {
     let cipher = ChaCha20Poly1305::new(&key);
     let nonce = ChaCha20Poly1305::generate_nonce(&mut OsRng); // 96-bits; unique per message
     let plaintext = Payload::from(raw.as_bytes());
-    let ciphertext = cipher
-        .encrypt(&nonce, plaintext)
-        .map_err(CacheVaultError::ChaCha20)?;
+    let ciphertext = cipher.encrypt(&nonce, plaintext).map_err(CacheVaultError::ChaCha20)?;
     Ok((ciphertext, nonce.to_vec()))
 }
 
@@ -24,9 +22,7 @@ pub fn decrypt(nonce: &Vec<u8>, encrypted: &Vec<u8>) -> Result<String, CacheVaul
     let cipher = ChaCha20Poly1305::new(&key);
     let ciphertext = Payload::from(encrypted.as_ref());
     let nonce = GenericArray::from_slice(nonce.as_ref());
-    let plaintext = cipher
-        .decrypt(&nonce, ciphertext)
-        .map_err(CacheVaultError::ChaCha20)?;
+    let plaintext = cipher.decrypt(&nonce, ciphertext).map_err(CacheVaultError::ChaCha20)?;
     String::from_utf8(plaintext).map_err(CacheVaultError::FromUtf8Error)
 }
 

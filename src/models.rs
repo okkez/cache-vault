@@ -116,10 +116,16 @@ impl Entry {
             nonce,
             encrypted_value,
             expired_at,
-        ).execute(&*POOL)
-            .await
-            .with_context(|| format!("failed to upsert entries namespace={:?}, key_name={:?}", namespace, key_name))?
-            .last_insert_rowid();
+        )
+        .execute(&*POOL)
+        .await
+        .with_context(|| {
+            format!(
+                "failed to upsert entries namespace={:?}, key_name={:?}",
+                namespace, key_name
+            )
+        })?
+        .last_insert_rowid();
         Ok(id)
     }
 }
@@ -230,10 +236,11 @@ impl Attribute {
             nonce,
             encrypted_value,
             hashed_value
-        ).execute(&*POOL)
-            .await
-            .with_context(|| format!("failed to upsert attributes entry_id={:?} name={:?}", entry_id, name))?
-            .last_insert_rowid();
+        )
+        .execute(&*POOL)
+        .await
+        .with_context(|| format!("failed to upsert attributes entry_id={:?} name={:?}", entry_id, name))?
+        .last_insert_rowid();
         Ok(id)
     }
 }
@@ -275,12 +282,19 @@ mod tests {
                       ,($1, "name1", $5, $6, $7, datetime('now'), datetime('now'))
                       ,($1, "name2", $8, $9, $10, datetime('now'), datetime('now'))
             "#,
-        ).bind(entry_id)
-            .bind(nonce0).bind(envrypted_value0).bind(hashed_value0)
-            .bind(nonce1).bind(envrypted_value1).bind(hashed_value1)
-            .bind(nonce2).bind(envrypted_value2).bind(hashed_value2)
-            .execute(&*POOL)
-            .await?;
+        )
+        .bind(entry_id)
+        .bind(nonce0)
+        .bind(envrypted_value0)
+        .bind(hashed_value0)
+        .bind(nonce1)
+        .bind(envrypted_value1)
+        .bind(hashed_value1)
+        .bind(nonce2)
+        .bind(envrypted_value2)
+        .bind(hashed_value2)
+        .execute(&*POOL)
+        .await?;
 
         let attributes = Attribute::fetch_all(entry_id).await?;
         assert_eq!(attributes.len(), 3);
@@ -322,15 +336,13 @@ mod tests {
         assert_eq!(e.key_name, "test-key");
         assert_eq!(e.plaintext()?, "test-updated-value");
 
-        let attribute_id =
-            Attribute::upsert(entry_id, "test-attribute", "test-attribute-value").await?;
+        let attribute_id = Attribute::upsert(entry_id, "test-attribute", "test-attribute-value").await?;
         let a = Attribute::fetch_by_id(attribute_id).await?;
         assert_eq!(a.id, attribute_id);
         assert_eq!(a.entry_id, entry_id);
         assert_eq!(a.name, "test-attribute");
         assert_eq!(a.plaintext()?, "test-attribute-value");
-        let attribute_id2 =
-            Attribute::upsert(entry_id, "test-attribute", "test-updated-attribute-value").await?;
+        let attribute_id2 = Attribute::upsert(entry_id, "test-attribute", "test-updated-attribute-value").await?;
         let a = Attribute::fetch_by_id(attribute_id).await?;
         assert_eq!(attribute_id, attribute_id2);
         assert_eq!(a.id, attribute_id);
