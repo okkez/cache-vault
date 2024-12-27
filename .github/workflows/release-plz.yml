@@ -32,6 +32,10 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+      - name: Install tools
+        uses: taiki-e/install-action@v2
+        with:
+          tool: sqlx-cli
       - name: sqlx prepare
         run: cargo sqlx prepare
       - name: Run release-plz

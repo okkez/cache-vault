@@ -19,6 +19,11 @@ jobs:
       - name: Install stable toolchain
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install tools
+        uses: taiki-e/install-action@v2
+        with:
+          tool: sqlx-cli
+
       - uses: Swatinem/rust-cache@v2
 
       - name: sqlx prepare
@@ -41,7 +46,7 @@ jobs:
       - name: Install tools
         uses: taiki-e/install-action@v2
         with:
-          tool: cargo-binstall,cargo-nextest
+          tool: cargo-nextest,sqlx-cli
 
       - uses: Swatinem/rust-cache@v2
 
