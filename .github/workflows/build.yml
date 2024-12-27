@@ -20,6 +20,10 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - uses: Swatinem/rust-cache@v2
+
+      - name: sqlx prepare
+        run: cargo sqlx prepare
+
       - name: Cargo check
         run: cargo check
 
@@ -40,6 +44,9 @@ jobs:
           tool: cargo-binstall,cargo-nextest
 
       - uses: Swatinem/rust-cache@v2
+
+      - name: sqlx prepare
+        run: cargo sqlx prepare
 
       - name: Run cargo test
         run: cargo nextest run
