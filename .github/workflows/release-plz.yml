@@ -9,6 +9,9 @@ on:
     branches:
       - master
 
+env:
+  DATABASE_URL: sqlite:./release-plz.db
+
 jobs:
   release-plz:
     name: Release-plz
