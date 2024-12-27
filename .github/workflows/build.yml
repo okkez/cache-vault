@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  DATABASE_URL: sqlite:./test.db
+
 jobs:
   check:
     name: Check
