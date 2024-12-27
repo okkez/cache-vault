@@ -26,8 +26,9 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: sqlx prepare
-        run: cargo sqlx prepare
+      - run: cargo sqlx database create
+      - run: cargo sqlx migrate run
+      - run: cargo sqlx prepare
 
       - name: Cargo check
         run: cargo check
@@ -50,8 +51,9 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: sqlx prepare
-        run: cargo sqlx prepare
+      - run: cargo sqlx database create
+      - run: cargo sqlx migrate run
+      - run: cargo sqlx prepare
 
       - name: Run cargo test
         run: cargo nextest run
