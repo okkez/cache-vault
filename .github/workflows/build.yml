@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  DATABASE_URL: sqlite:./test.db
+  DATABASE_URL: "sqlite://./test.db"
 
 jobs:
   check:
@@ -26,12 +26,13 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - run: cargo sqlx database create
-      - run: cargo sqlx migrate run
-      - run: cargo sqlx prepare
-
       - name: Cargo check
-        run: cargo check
+        run: |
+          touch test.db
+          cargo sqlx database create
+          cargo sqlx migrate run
+          cargo sqlx prepare
+          cargo check
 
 
   test:
@@ -51,12 +52,13 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - run: cargo sqlx database create
-      - run: cargo sqlx migrate run
-      - run: cargo sqlx prepare
-
       - name: Run cargo test
-        run: cargo nextest run
+        run: |
+          touch test.db
+          cargo sqlx database create
+          cargo sqlx migrate run
+          cargo sqlx prepare
+          cargo nextest run
 
 
   lints:
