@@ -2,7 +2,7 @@
 name = "cache-vault"
 license = "MIT OR Apache-2.0"
 authors = ["okkez <okkez000@gmail.com>"]
-description = "TODO"
+description = "Caching secret values to SQLite with encryption"
 repository = "https://github.com/okkez/cache-vault"
 homepage = "https://github.com/okkez/cache-vault"
 version = "0.1.0"
