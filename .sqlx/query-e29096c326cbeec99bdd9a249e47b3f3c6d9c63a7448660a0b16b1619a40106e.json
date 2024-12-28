@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "\n              select\n                id\n              , entry_id\n              , name\n              , nonce\n              , encrypted_value\n              , hashed_value\n              , created_at\n              , updated_at\n              from\n                attributes\n              where\n                id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Int64"
+      },
+      {
+        "name": "entry_id",
+        "ordinal": 1,
+        "type_info": "Int64"
+      },
+      {
+        "name": "name",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "nonce",
+        "ordinal": 3,
+        "type_info": "Blob"
+      },
+      {
+        "name": "encrypted_value",
+        "ordinal": 4,
+        "type_info": "Blob"
+      },
+      {
+        "name": "hashed_value",
+        "ordinal": 5,
+        "type_info": "Blob"
+      },
+      {
+        "name": "created_at",
+        "ordinal": 6,
+        "type_info": "Datetime"
+      },
+      {
+        "name": "updated_at",
+        "ordinal": 7,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "e29096c326cbeec99bdd9a249e47b3f3c6d9c63a7448660a0b16b1619a40106e"
+}
