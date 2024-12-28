@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "\n              select\n                id\n              , namespace\n              , key_name\n              , nonce\n              , encrypted_value\n              , created_at\n              , updated_at\n              , expired_at\n              from\n                entries\n              where\n               namespace = $1\n               and\n               key_name = $2\n            ",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Int64"
+      },
+      {
+        "name": "namespace",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "key_name",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "nonce",
+        "ordinal": 3,
+        "type_info": "Blob"
+      },
+      {
+        "name": "encrypted_value",
+        "ordinal": 4,
+        "type_info": "Blob"
+      },
+      {
+        "name": "created_at",
+        "ordinal": 5,
+        "type_info": "Datetime"
+      },
+      {
+        "name": "updated_at",
+        "ordinal": 6,
+        "type_info": "Datetime"
+      },
+      {
+        "name": "expired_at",
+        "ordinal": 7,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+    ]
+  },
+  "hash": "548f9943d05d112e28812172b45c46e5f49580b610eaa6f928d65c0712e35a27"
+}

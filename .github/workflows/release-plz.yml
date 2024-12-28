@@ -37,12 +37,6 @@ jobs:
         uses: taiki-e/install-action@v2
         with:
           tool: sqlx-cli
-      - name: setup db
-        run: |
-          touch release-plz.db
-          cargo sqlx database create
-          cargo sqlx migrate run
-          cargo sqlx prepare
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@v0.5
         with:

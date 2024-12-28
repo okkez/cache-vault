@@ -31,7 +31,6 @@ jobs:
           touch test.db
           cargo sqlx database create
           cargo sqlx migrate run
-          cargo sqlx prepare
           cargo check
 
 
@@ -57,7 +56,6 @@ jobs:
           touch test.db
           cargo sqlx database create
           cargo sqlx migrate run
-          cargo sqlx prepare
           cargo nextest run
 
 
