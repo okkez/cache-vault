@@ -5,9 +5,6 @@ on:
     branches:
       - main
 
-env:
-  DATABASE_URL: "sqlite://./test.db"
-
 jobs:
   check:
     name: Check
@@ -27,12 +24,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Cargo check
-        run: |
-          touch test.db
-          cargo sqlx database create
-          cargo sqlx migrate run
-          cargo sqlx prepare
-          cargo check
+        run: cargo check
 
 
   test:
@@ -53,12 +45,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Run cargo test
-        run: |
-          touch test.db
-          cargo sqlx database create
-          cargo sqlx migrate run
-          cargo sqlx prepare
-          cargo nextest run
+        run: cargo nextest run
 
 
   lints:
