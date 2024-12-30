@@ -14,6 +14,10 @@ use std::collections::HashMap;
 use crate::error::CacheVaultError;
 use crate::models::*;
 
+pub async fn init() -> Result<(), CacheVaultError> {
+    connection::migrate().await
+}
+
 pub async fn save(
     namespace: &str,
     key_name: &str,
