@@ -23,6 +23,8 @@ static DB_PATH: LazyLock<String> = LazyLock::new(|| {
         .unwrap()
         .to_string();
     let db_path = std::env::var("CACHE_VAULT_DATABASE_PATH").unwrap_or(default_db_path);
+    let db_dir = std::path::Path::new(&db_path).parent().expect("Unable to get  cache-vault directory");
+    std::fs::create_dir_all(db_dir).expect("Unable to create cache-vault directory");
     db_path
 });
 
