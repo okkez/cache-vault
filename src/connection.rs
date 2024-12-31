@@ -37,6 +37,7 @@ static DB_PATH: LazyLock<String> = LazyLock::new(|| {
     let file = NamedTempFile::new().unwrap();
     let path = String::from(file.path().to_string_lossy());
     let _ = file.close();
+    tracing::info!("DB_PATH: {}", path);
     path
 });
 
@@ -58,6 +59,7 @@ pub async fn migrate() -> Result<(), CacheVaultError> {
 mod tests {
     use super::*;
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_database() -> Result<(), CacheVaultError> {
         migrate().await?;

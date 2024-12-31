@@ -69,6 +69,7 @@ mod tests {
     use super::*;
     use crate::connection::migrate;
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_save() -> Result<(), CacheVaultError> {
         migrate().await?;
@@ -94,6 +95,7 @@ mod tests {
         Ok(())
     }
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_save_with_attributes() -> Result<(), CacheVaultError> {
         migrate().await?;
