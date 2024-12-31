@@ -27,6 +27,7 @@ static DB_PATH: LazyLock<String> = LazyLock::new(|| {
         .parent()
         .expect("Unable to get  cache-vault directory");
     std::fs::create_dir_all(db_dir).expect("Unable to create cache-vault directory");
+    tracing::debug!(name: "cache-vault", "DB_PATH: {}", &db_path);
     db_path
 });
 
@@ -43,9 +44,10 @@ static DB_PATH: LazyLock<String> = LazyLock::new(|| {
 static MIGRATED: OnceLock<bool> = OnceLock::new();
 
 #[allow(dead_code)]
+#[tracing::instrument]
 pub async fn migrate() -> Result<(), CacheVaultError> {
     if MIGRATED.get().is_none() {
-        dbg!("migrate");
+        tracing::debug!("migrate");
         MIGRATOR.run(&*POOL).await.map_err(CacheVaultError::MigrateError)?;
         let _ = MIGRATED.set(true);
     }

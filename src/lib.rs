@@ -14,10 +14,12 @@ use std::collections::HashMap;
 use crate::error::CacheVaultError;
 use crate::models::*;
 
+#[tracing::instrument]
 pub async fn init() -> Result<(), CacheVaultError> {
     connection::migrate().await
 }
 
+#[tracing::instrument]
 pub async fn save(
     namespace: &str,
     key_name: &str,
@@ -34,11 +36,13 @@ pub async fn save(
     Ok(())
 }
 
+#[tracing::instrument]
 pub async fn fetch(namespace: &str, key_name: &str) -> Result<(String, Option<NaiveDateTime>), CacheVaultError> {
     let entry = Entry::fetch(namespace, key_name).await?;
     Ok((entry.plaintext()?, entry.expired_at))
 }
 
+#[tracing::instrument]
 pub async fn fetch_with_attributes(
     namespace: &str,
     key_name: &str,
