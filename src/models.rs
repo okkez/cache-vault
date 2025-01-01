@@ -250,6 +250,7 @@ mod tests {
     use super::*;
     use crate::connection::migrate;
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_entry_fetch_no_such_key() -> Result<(), CacheVaultError> {
         let _ = migrate().await?;
@@ -263,6 +264,7 @@ mod tests {
         Ok(())
     }
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_attribute_fetch_all() -> Result<(), CacheVaultError> {
         let _ = migrate().await?;
@@ -319,6 +321,7 @@ mod tests {
         Ok(())
     }
 
+    #[tracing_test::traced_test]
     #[tokio::test]
     async fn test_upsert_entry_and_attribute() -> Result<(), CacheVaultError> {
         let _ = migrate().await?;
