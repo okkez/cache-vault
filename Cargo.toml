@@ -5,7 +5,7 @@ authors = ["okkez <okkez000@gmail.com>"]
 description = "Caching secret values to SQLite with encryption"
 repository = "https://github.com/okkez/cache-vault"
 homepage = "https://github.com/okkez/cache-vault"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 [profile.release]
