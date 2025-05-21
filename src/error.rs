@@ -1,6 +1,6 @@
 use thiserror::Error;
 
-#[derive(Error, Debug)]
+#[derive(Error, Debug, Clone)]
 pub enum CacheVaultError {
     #[error("keyring error")]
     Keyring(#[from] keyring::Error),
@@ -25,4 +25,7 @@ pub enum CacheVaultError {
 
     #[error("anyhow error with context")]
     AnyhowError(#[from] anyhow::Error),
+
+    #[error("config directory not found")]
+    ConfigDirectoryNotFound,
 }
