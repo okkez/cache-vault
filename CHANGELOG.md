@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/okkez/cache-vault/compare/v0.1.1...v0.1.2) - 2025-08-12
+
+### Other
+
+- *(deps)* update actions/checkout action to v4.3.0
+- *(deps)* update taiki-e/install-action action to v2.57.1
+- *(deps)* update taiki-e/install-action action to v2.56.24
+- Merge pull request #15 from okkez/renovate/marcoieni-release-plz-action-0.x
+- *(deps)* update taiki-e/install-action action to v2.56.23
+- fix
+- Pin actions
+- *(deps)* update actions/create-github-app-token action to v2
+
 ## [0.1.1](https://github.com/okkez/cache-vault/compare/v0.1.0...v0.1.1) - 2025-01-01
 
 ### Added
