@@ -56,7 +56,7 @@ impl Key {
     #[allow(dead_code)]
     pub fn delete(&self) -> Result<(), CacheVaultError> {
         let entry = self.entry()?;
-        entry.delete_password().map_err(CacheVaultError::Keyring)
+        entry.delete_credential().map_err(CacheVaultError::Keyring)
     }
 
     fn entry(&self) -> Result<keyring::Entry, CacheVaultError> {
