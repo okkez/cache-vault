@@ -100,7 +100,7 @@ impl Entry {
         expired_at: Option<NaiveDateTime>,
     ) -> Result<i64, CacheVaultError> {
         let (encrypted_value, nonce) = encrypt(value.to_string())?;
-        let id = sqlx::query!(
+        let id = sqlx::query_scalar!(
             r#"
               insert into
                 entries(namespace, key_name, nonce, encrypted_value, created_at, updated_at, expired_at)
@@ -110,6 +110,7 @@ impl Entry {
                 , encrypted_value = $4
                 , updated_at = datetime('now')
                 , expired_at = $5
+                returning id
             "#,
             namespace,
             key_name,
@@ -117,15 +118,14 @@ impl Entry {
             encrypted_value,
             expired_at,
         )
-        .execute(&*POOL)
+        .fetch_one(&*POOL)
         .await
         .with_context(|| {
             format!(
                 "failed to upsert entries namespace={:?}, key_name={:?}",
                 namespace, key_name
             )
-        })?
-        .last_insert_rowid();
+        })?;
         Ok(id)
     }
 }
@@ -220,7 +220,7 @@ impl Attribute {
     pub async fn upsert(entry_id: i64, name: &str, value: &str) -> Result<i64, CacheVaultError> {
         let (encrypted_value, nonce) = encrypt(value.to_string())?;
         let hashed_value = digest(value.as_bytes())?.to_vec();
-        let id = sqlx::query!(
+        let id = sqlx::query_scalar!(
             r#"
               insert into
                 attributes (entry_id, name, nonce, encrypted_value, hashed_value, created_at, updated_at)
@@ -230,6 +230,7 @@ impl Attribute {
                 , encrypted_value = $4
                 , hashed_value = $5
                 , updated_at = datetime('now')
+                returning id
             "#,
             entry_id,
             name,
@@ -237,10 +238,9 @@ impl Attribute {
             encrypted_value,
             hashed_value
         )
-        .execute(&*POOL)
+        .fetch_one(&*POOL)
         .await
-        .with_context(|| format!("failed to upsert attributes entry_id={:?} name={:?}", entry_id, name))?
-        .last_insert_rowid();
+        .with_context(|| format!("failed to upsert attributes entry_id={:?} name={:?}", entry_id, name))?;
         Ok(id)
     }
 }
