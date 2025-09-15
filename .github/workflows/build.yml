@@ -9,6 +9,8 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "sqlite::memory:"
     steps:
       - name: Checkout sources
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -33,6 +35,8 @@ jobs:
   test:
     name: Test Suite
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "sqlite::memory:"
     steps:
       - name: Checkout sources
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
