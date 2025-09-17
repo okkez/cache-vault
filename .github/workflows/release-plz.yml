@@ -30,7 +30,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Install tools
-        uses: taiki-e/install-action@1dd4d60a583436c5738af3d204f159f44d92f704 # v2.61.0
+        uses: taiki-e/install-action@8ea32481661d5e04d602f215b94f17e4014b44f9 # v2.61.9
         with:
           tool: sqlx-cli
       - name: Run release-plz
