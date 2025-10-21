@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "\n              insert into\n                entries(namespace, key_name, nonce, encrypted_value, created_at, updated_at, expired_at)\n                values ($1, $2, $3, $4, datetime('now'), datetime('now'), $5)\n                on conflict (namespace, key_name) do update set\n                  nonce = $3\n                , encrypted_value = $4\n                , updated_at = datetime('now')\n                , expired_at = $5\n                returning id\n            ",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Integer"
+      }
+    ],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "cfb4bf335928af08d7da2bcf365d2eb4a8e607fb71c29dfaa4fcca4165d4548e"
+}
