@@ -13,6 +13,8 @@ jobs:
   release-plz:
     name: Release-plz
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "sqlite:cache-vault.db"
     steps:
       # Generating a GitHub token, so that PRs and tags created by
       # the release-plz-action can trigger actions workflows.
@@ -33,6 +35,12 @@ jobs:
         uses: taiki-e/install-action@0005e0116e92d8489d8d96fbff83f061c79ba95a # v2.62.31
         with:
           tool: sqlx-cli
+      - name: create db file
+        run: touch cache-vault.db
+      - name: migrate
+        run: sqlx migrate run
+      - name: prepare
+        run: cargo sqlx prepare
       - name: Run release-plz
         uses: MarcoIeni/release-plz-action@d529f731ae3e89610ada96eda34e5c6ba3b12214 # v0.5.118
         env:
