@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3](https://github.com/okkez/cache-vault/compare/v0.1.2...v0.1.3) - 2025-11-13
+
+### Other
+
+- *(deps)* update taiki-e/install-action action to v2.62.50
+- *(deps)* update taiki-e/install-action action to v2.62.49
+- *(deps)* update taiki-e/install-action action to v2.62.47
+- *(deps)* update taiki-e/install-action action to v2.62.46
+- *(deps)* update taiki-e/install-action action to v2.62.39
+- *(deps)* update taiki-e/install-action action to v2.62.38
+- *(deps)* update taiki-e/install-action action to v2.62.36
+- *(deps)* update taiki-e/install-action action to v2.62.35
+
 ## [0.1.2](https://github.com/okkez/cache-vault/compare/v0.1.1...v0.1.2) - 2025-09-15
 
 ### Fixed
