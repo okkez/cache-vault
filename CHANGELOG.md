@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3](https://github.com/okkez/cache-vault/compare/v0.1.2...v0.1.3) - 2026-03-12
+
+### Other
+
+- Merge pull request #99 from okkez/renovate/swatinem-rust-cache-2.x
+- *(deps)* update taiki-e/install-action action to v2.68.27
+- Merge pull request #94 from okkez/renovate/taiki-e-install-action-2.x
+- Merge pull request #96 from okkez/renovate/taiki-e-upload-rust-binary-action-1.x
+- *(deps)* update taiki-e/upload-rust-binary-action action to v1.28.1
+- Merge pull request #93 from okkez/renovate/taiki-e-upload-rust-binary-action-1.x
+- Merge pull request #91 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update taiki-e/install-action action to v2.68.0
+- Merge pull request #89 from okkez/renovate/actions-checkout-6.x
+- Merge pull request #88 from okkez/renovate/marcoieni-release-plz-action-0.x
+- *(deps)* update taiki-e/install-action action to v2.67.13
+- *(deps)* update taiki-e/install-action action to v2.65.15
+- *(deps)* update taiki-e/install-action action to v2.64.0
+- *(deps)* update taiki-e/install-action action to v2.63.2
+- *(deps)* update taiki-e/install-action action to v2.62.66
+- Merge pull request #80 from okkez/renovate/marcoieni-release-plz-action-0.x
+- Merge pull request #79 from okkez/renovate/actions-create-github-app-token-2.x
+- *(deps)* update taiki-e/install-action action to v2.62.63
+- *(deps)* update taiki-e/install-action action to v2.62.62
+- Merge pull request #75 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update actions/checkout action to v6.0.1
+- *(deps)* update taiki-e/install-action action to v2.62.60
+- Merge pull request #71 from okkez/renovate/swatinem-rust-cache-2.x
+- *(deps)* update taiki-e/install-action action to v2.62.58
+- *(deps)* update marcoieni/release-plz-action action to v0.5.119
+- Merge pull request #66 from okkez/renovate/actions-checkout-6.x
+- Merge pull request #68 from okkez/renovate/actions-create-github-app-token-2.x
+- *(deps)* update taiki-e/install-action action to v2.62.57
+- Merge pull request #63 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update taiki-e/install-action action to v2.62.54
+- *(deps)* update taiki-e/install-action action to v2.62.50
+- *(deps)* update taiki-e/install-action action to v2.62.49
+- *(deps)* update taiki-e/install-action action to v2.62.47
+- *(deps)* update taiki-e/install-action action to v2.62.46
+- *(deps)* update taiki-e/install-action action to v2.62.39
+- *(deps)* update taiki-e/install-action action to v2.62.38
+- *(deps)* update taiki-e/install-action action to v2.62.36
+- *(deps)* update taiki-e/install-action action to v2.62.35
+
 ## [0.1.2](https://github.com/okkez/cache-vault/compare/v0.1.1...v0.1.2) - 2025-09-15
 
 ### Fixed
