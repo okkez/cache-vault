@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4](https://github.com/okkez/cache-vault/compare/v0.1.3...v0.1.4) - 2026-03-15
+
+### Other
+
+- Merge pull request #101 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update taiki-e/install-action action to v2.68.32
+
 ## [0.1.3](https://github.com/okkez/cache-vault/compare/v0.1.2...v0.1.3) - 2026-03-12
 
 ### Other
