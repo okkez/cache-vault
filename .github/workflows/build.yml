@@ -19,7 +19,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install tools
-        uses: taiki-e/install-action@e9e8e031bcd90cdbe8ac6bb1d376f8596e587fbf # v2.70.2
+        uses: taiki-e/install-action@1329c298aa20c3257846c9b2e0e55967df3e3c37 # v2.75.25
         with:
           tool: sqlx-cli
 
@@ -51,7 +51,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install tools
-        uses: taiki-e/install-action@e9e8e031bcd90cdbe8ac6bb1d376f8596e587fbf # v2.70.2
+        uses: taiki-e/install-action@1329c298aa20c3257846c9b2e0e55967df3e3c37 # v2.75.25
         with:
           tool: cargo-nextest,sqlx-cli
 
