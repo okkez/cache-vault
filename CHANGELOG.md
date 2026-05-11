@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4](https://github.com/okkez/cache-vault/compare/v0.1.3...v0.1.4) - 2026-05-11
+
+### Other
+
+- *(deps)* update taiki-e/install-action action to v2.77.6
+- *(deps)* update taiki-e/install-action action to v2.77.1
+- *(deps)* update taiki-e/install-action action to v2.75.25
+- *(deps)* update taiki-e/install-action action to v2.70.2
+- Merge pull request #107 from okkez/renovate/taiki-e-upload-rust-binary-action-1.x
+- *(deps)* update taiki-e/upload-rust-binary-action action to v1.29.1
+- Merge pull request #103 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update actions/create-github-app-token action to v3
+- Merge pull request #101 from okkez/renovate/taiki-e-install-action-2.x
+- *(deps)* update taiki-e/install-action action to v2.68.32
+
 ## [0.1.3](https://github.com/okkez/cache-vault/compare/v0.1.2...v0.1.3) - 2026-03-12
 
 ### Other
